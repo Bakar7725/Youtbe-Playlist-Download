@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Ignore FFmpeg
+ffmpeg.exe
+ffmpeg.zip
+
+# Ignore pip installer
+get-pip.py
+
+# Ignore downloads
+downloads/
+
+# Ignore build outputs
+build/
+dist/
+*.spec

@@ -1,66 +1,39 @@
-# 🎥 YouTube Playlist Downloader (Portable Desktop App)
+📜 License
+This project is licensed under the MIT License.
 
-A lightweight, portable Flask-based video downloader that runs in your browser. It supports YouTube playlists, automatically downloads FFmpeg if needed, merges high-quality audio/video streams (up to 4K), and can be compiled into a single standalone `.exe` for Windows.
+text
+MIT License
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Python](https://img.shields.io/badge/python-3.9+-green.svg)
-![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
-![Flask](https://img.shields.io/badge/flask-3.0+-red.svg)
-![yt-dlp](https://img.shields.io/badge/yt--dlp-latest-orange.svg)
+Copyright (c) 2026 Bakar7725
 
----
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## ⬇️ Download
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-> 🚀 **Ready to use — no installation required!**
->
-> **[📥 Download launcher.exe (Windows)](https://github.com/Bakar7725/Youtbe-Playlist-Download/raw/main/Exe/launcher.exe)**
->
-> *Portable standalone executable. FFmpeg is bundled inside. Just double-click and go.*
->
-> **Requirements:** Windows 10 or 11. No Python, no setup.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+💡 Author
+Bakar7725
 
----
+🐙 GitHub: @Bakar7725
 
-## 📖 Table of Contents
+📧 Email: abug4201@gmail.com
 
-- [Download](#️-download)
-- [Features](#-features)
-- [Quick Start](#-quick-start-for-developers)
-- [Building the EXE](#-building-the-standalone-exe-windows)
-- [Tech Stack](#️-tech-stack)
-- [Folder Structure](#-folder-structure)
-- [Troubleshooting](#-troubleshooting)
-- [Disclaimer](#️-disclaimer)
-- [License](#-license)
-- [Author](#-author)
+🌟 Show Your Support
+If this project helped you, please give it a ⭐ on GitHub! It means a lot and helps others discover the project.
 
----
-
-## ✨ Features
-
-- 📋 **Playlist Support:** Analyze and download entire YouTube playlists or single videos.
-- 🎬 **High-Quality Merging:** Automatically downloads the best audio track and merges it with high-res video (up to 4K) using FFmpeg.
-- ⚙️ **Auto FFmpeg Installer:** Don't have FFmpeg? No problem. The app will download it silently on the first run.
-- 🚀 **Smart Port Selection:** If port 5000 is busy, the app automatically finds a free port.
-- 📦 **Portable `.exe`:** Can be compiled into a single `.exe` for Windows — no Python required on the target machine.
-- ⏱️ **Real-time Progress:** Live progress bars with speed, ETA, and a cancel button.
-- 🎨 **Clean UI:** Modern dark-themed interface with drag-and-drop playlist support.
-- 🔀 **Drag & Drop:** Drag any video from the playlist directly into the main panel to load its formats.
-
----
-
-## 🚀 Quick Start (For Developers)
-
-### Prerequisites
-- Python 3.9 or higher
-- Internet connection (for FFmpeg auto-download on first run)
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/Bakar7725/Youtbe-Playlist-Download.git
-cd Youtbe-Playlist-Download
-
+text
 
 2. Install dependencies
 bash
@@ -206,3 +179,12 @@ SOFTWARE.
 Bakar7725
 
 🐙 GitHub: @Bakar7725
+
+📧 Email: abug4201@gmail.com
+
+🌟 Show Your Support
+If this project helped you, please give it a ⭐ on GitHub! It means a lot and helps others discover the project.
+
+text
+
+---

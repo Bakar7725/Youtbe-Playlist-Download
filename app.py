@@ -5,6 +5,8 @@ import uuid
 import threading
 import shutil
 import sys
+import zipfile
+import requests
 import yt_dlp
 from flask import Flask, request, jsonify, render_template, send_file, abort
 from flask_cors import CORS
@@ -20,7 +22,7 @@ def resource_path(relative_path):
 app = Flask(__name__, template_folder=resource_path("templates"))
 CORS(app)
 
-# --- Handle Downloads Folder (Saved next to the EXE) ---
+# --- Handle Downloads Folder ---
 if getattr(sys, 'frozen', False):
     EXE_DIR = os.path.dirname(sys.executable)
 else:
@@ -29,17 +31,51 @@ else:
 DOWNLOAD_DIR = os.path.join(EXE_DIR, "downloads")
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
-# --- Find FFmpeg ---
-local_ffmpeg = os.path.join(EXE_DIR, "ffmpeg.exe")
-bundled_ffmpeg = resource_path("ffmpeg.exe")
+# --- Auto-Download FFmpeg if missing ---
+def ensure_ffmpeg():
+    local_ffmpeg = os.path.join(EXE_DIR, "ffmpeg.exe")
+    if os.path.exists(local_ffmpeg):
+        return local_ffmpeg
 
-if os.path.exists(local_ffmpeg):
-    FFMPEG_PATH = local_ffmpeg
-elif os.path.exists(bundled_ffmpeg):
-    FFMPEG_PATH = bundled_ffmpeg
-else:
-    FFMPEG_PATH = shutil.which("ffmpeg")
+    # If running as EXE, check bundled version
+    if getattr(sys, 'frozen', False):
+        bundled = resource_path("ffmpeg.exe")
+        if os.path.exists(bundled):
+            return bundled
 
+    # Check system PATH
+    system_ffmpeg = shutil.which("ffmpeg")
+    if system_ffmpeg:
+        return system_ffmpeg
+
+    # Not found anywhere, download it
+    print("⏳ FFmpeg not found. Downloading automatically...")
+    url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip"
+    zip_path = os.path.join(EXE_DIR, "ffmpeg.zip")
+    
+    try:
+        response = requests.get(url, stream=True)
+        response.raise_for_status()
+        with open(zip_path, 'wb') as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
+                
+        print("📦 Extracting FFmpeg...")
+        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            for file in zip_ref.namelist():
+                if file.endswith("ffmpeg.exe"):
+                    # Extract ffmpeg.exe directly to EXE_DIR
+                    with zip_ref.open(file) as source, open(local_ffmpeg, "wb") as target:
+                        shutil.copyfileobj(source, target)
+                    break
+        os.remove(zip_path)
+        print("✅ FFmpeg downloaded successfully!")
+        return local_ffmpeg
+    except Exception as e:
+        print(f"❌ Failed to download FFmpeg: {e}")
+        return None
+
+FFMPEG_PATH = ensure_ffmpeg()
 HAS_FFMPEG = FFMPEG_PATH is not None
 
 
